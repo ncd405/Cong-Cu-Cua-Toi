@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolHub - Bộ Công Cụ Tải Video Miễn Phí</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-toolbox"></i>
+                <span>ToolHub</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Trang Chủ</span>
+                </a>
+                <a href="facebook.html" class="nav-link">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="tiktok.html" class="nav-link">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="#stats" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Thống Kê</span>
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Giới Thiệu</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Bộ Công Cụ Tải Video Miễn Phí</h1>
+                <p>Tải video từ Facebook, TikTok với chất lượng cao, không watermark, hoàn toàn miễn phí</p>
+                
+                <div class="stats" id="stats">
+                    <div class="stat-card">
+                        <i class="fas fa-download"></i>
+                        <h3 id="totalDownloads">10,000+</h3>
+                        <p>Lượt tải thành công</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>99.9%</h3>
+                        <p>Thời gian hoạt động</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>5,000+</h3>
+                        <p>Người dùng hài lòng</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>100%</h3>
+                        <p>Miễn phí mãi mãi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Grid -->
+        <section class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: white; font-size: 2.5rem;">
+                <i class="fas fa-tools"></i> Công Cụ Của Chúng Tôi
+            </h2>
+            
+            <div class="tools-grid">
+                <!-- Facebook Downloader -->
+                <a href="facebook.html" class="tool-card">
+                    <div class="tool-icon facebook-bg">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3>Facebook Downloader</h3>
+                    <p>Tải video Facebook chất lượng HD, không giới hạn thời gian</p>
+                    <div class="tool-stats">
+                        <div class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span>HD Video</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Không Watermark</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Miễn Phí</span>
+                        </div>
+                    </div>
+                    <button class="download-btn" style="margin-top: 1rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Sử dụng ngay</span>
+                    </button>
+                </a>
+
+                <!-- TikTok Downloader -->
+                <a href="tiktok.html" class="tool-card">
+                    <div class="tool-icon tiktok-bg">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok Downloader</h3>
+                    <p>Tải video TikTok không watermark, kèm nhạc gốc</p>
+                    <div class="tool-stats">
+                        <div class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span>No Watermark</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span>MP3 Gốc</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span>1080p</span>
+                        </div>
+                    </div>
+                    <button class="download-btn" style="margin-top: 1rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Sử dụng ngay</span>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- How it Works -->
+        <section class="container" style="margin-top: 4rem; color: white;">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">
+                <i class="fas fa-play-circle"></i> Cách Sử Dụng
+            </h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Bước 1: Sao chép Link</h3>
+                    <p>Sao chép URL video từ Facebook hoặc TikTok</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-paste"></i>
+                    </div>
+                    <h3>Bước 2: Dán vào Tool</h3>
+                    <p>Dán link vào ô tương ứng và nhấn "Tải Video"</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Bước 3: Tải về máy</h3>
+                    <p>Nhấn nút download để lưu video về thiết bị</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-toolbox"></i> ToolHub</h3>
+                    <p>Nền tảng công cụ tải video miễn phí, chất lượng cao cho người dùng Việt Nam.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Công Cụ</h3>
+                    <ul class="footer-links">
+                        <li><a href="facebook.html"><i class="fab fa-facebook"></i> Facebook Downloader</a></li>
+                        <li><a href="tiktok.html"><i class="fab fa-tiktok"></i> TikTok Downloader</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hỗ Trợ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Hướng dẫn sử dụng</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> Liên hệ hỗ trợ</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kết nối</h3>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-telegram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 ToolHub. Tất cả các công cụ đều miễn phí sử dụng.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    <i class="fas fa-server"></i> API Status: 
+                    <span id="apiStatus" style="color: #10b981;">Đang kiểm tra...</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Check API status
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                document.getElementById('apiStatus').innerHTML = 
+                    `<i class="fas fa-circle"></i> ${data.status} (v${data.version})`;
+            } catch (error) {
+                document.getElementById('apiStatus').innerHTML = 
+                    `<i class="fas fa-circle" style="color:#ef4444"></i> Không kết nối`;
+            }
+        }
+        
+        // Animated counter
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString() + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString() + '+';
+                }
+            }, 20);
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            checkAPIStatus();
+            
+            // Start counter animation
+            const counterElement = document.getElementById('totalDownloads');
+            animateCounter(counterElement, 10000);
+            
+            console.log('ToolHub đã sẵn sàng!');
+        };
+    </script>
+</body>
+</html>

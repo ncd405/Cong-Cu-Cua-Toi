@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Downloader - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-toolbox"></i>
+                <span>ToolHub</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Trang Chủ</span>
+                </a>
+                <a href="facebook.html" class="nav-link active">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="tiktok.html" class="nav-link">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="#help" class="nav-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Trợ Giúp</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="downloader-container">
+                <!-- Header -->
+                <div class="downloader-header">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 1rem;">
+                        <div class="tool-icon facebook-bg" style="width: 70px; height: 70px;">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <h1>Facebook Downloader</h1>
+                    </div>
+                    <p>Tải video Facebook chất lượng HD, không giới hạn, hoàn toàn miễn phí</p>
+                </div>
+
+                <!-- Content -->
+                <div class="downloader-content">
+                    <!-- URL Input -->
+                    <div class="url-input-group">
+                        <label for="facebookUrl">
+                            <i class="fas fa-link"></i> Dán link video Facebook:
+                        </label>
+                        <div class="url-input-wrapper">
+                            <input 
+                                type="url" 
+                                id="facebookUrl" 
+                                class="url-input" 
+                                placeholder="https://www.facebook.com/watch/?v=..."
+                                value="https://www.facebook.com/share/r/1T">
+                            <span class="url-input-icon">
+                                <i class="fab fa-facebook"></i>
+                            </span>
+                        </div>
+                        <p style="margin-top: 0.5rem; color: var(--gray); font-size: 0.9rem;">
+                            <i class="fas fa-info-circle"></i>
+                            Hỗ trợ: Video cá nhân, video công khai, Reels
+                        </p>
+                    </div>
+
+                    <!-- Download Button -->
+                    <button onclick="downloadVideo()" class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        <span>Tải Video Facebook</span>
+                    </button>
+
+                    <!-- Loading -->
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Đang phân tích và tải video Facebook...</p>
+                        <p style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            Thời gian xử lý: 5-15 giây
+                        </p>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="result-container" id="resultContainer">
+                        <!-- Result will be inserted here by JavaScript -->
+                    </div>
+
+                    <!-- Help Section -->
+                    <div id="help" style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--gray-light);">
+                        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-question-circle" style="color: var(--primary);"></i>
+                            Hướng dẫn sử dụng
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                            <div style="background: var(--light); padding: 1.5rem; border-radius: var(--radius);">
+                                <h4 style="margin-bottom: 0.5rem; color: var(--primary);">
+                                    <i class="fas fa-mobile-alt"></i> Trên điện thoại
+                                </h4>
+                                <p>1. Mở ứng dụng Facebook</p>
+                                <p>2. Chọn video cần tải</p>
+                                <p>3. Nhấn "Chia sẻ" → "Sao chép liên kết"</p>
+                            </div>
+                            
+                            <div style="background: var(--light); padding: 1.5rem; border-radius: var(--radius);">
+                                <h4 style="margin-bottom: 0.5rem; color: var(--primary);">
+                                    <i class="fas fa-desktop"></i> Trên máy tính
+                                </h4>
+                                <p>1. Mở Facebook trên trình duyệt</p>
+                                <p>2. Click chuột phải vào video</p>
+                                <p>3. Chọn "Sao chép địa chỉ video"</p>
+                            </div>
+                            
+                            <div style="background: var(--light); padding: 1.5rem; border-radius: var(--radius);">
+                                <h4 style="margin-bottom: 0.5rem; color: var(--primary);">
+                                    <i class="fas fa-lightbulb"></i> Mẹo nhỏ
+                                </h4>
+                                <p>• Đảm bảo video không bị chặn tải</p>
+                                <p>• Video công khai dễ tải hơn</p>
+                                <p>• Nếu lỗi, thử lại sau vài phút</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>© 2024 ToolHub - Facebook Downloader | 
+                    <span id="apiStatus" style="color: #10b981;">
+                        <i class="fas fa-circle"></i> Đang kiểm tra API...
+                    </span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Công cụ hoàn toàn miễn phí, không lưu trữ video của người dùng
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Download function
+        async function downloadVideo() {
+            const url = document.getElementById('facebookUrl').value.trim();
+            const downloadBtn = document.getElementById('downloadBtn');
+            const loading = document.getElementById('loading');
+            const resultContainer = document.getElementById('resultContainer');
+            
+            // Validate URL
+            if (!url) {
+                showResult('error', 'Vui lòng nhập URL video Facebook');
+                return;
+            }
+            
+            if (!url.includes('facebook.com')) {
+                showResult('error', 'URL không phải là Facebook. Vui lòng kiểm tra lại.');
+                return;
+            }
+            
+            // Show loading
+            downloadBtn.disabled = true;
+            loading.style.display = 'block';
+            resultContainer.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/download/facebook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: url })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Show success result
+                    let resultHTML = `
+                        <div class="result-header success">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Tải thành công!</h3>
+                        </div>
+                        
+                        <div class="video-preview">
+                            <video controls style="width: 100%; height: 100%;">
+                                <source src="${data.url}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                        </div>
+                        
+                        <div class="video-info">
+                            <div class="info-row">
+                                <i class="fas fa-heading"></i>
+                                <span><strong>Tiêu đề:</strong> ${data.title || 'Facebook Video'}</span>
+                            </div>
+                            
+                            ${data.quality ? `
+                            <div class="info-row">
+                                <i class="fas fa-hd"></i>
+                                <span><strong>Chất lượng:</strong> ${data.quality}</span>
+                            </div>
+                            ` : ''}
+                            
+                            <div class="info-row">
+                                <i class="fas fa-info-circle"></i>
+                                <span><strong>Trạng thái:</strong> ${data.message || 'Sẵn sàng tải về'}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="${data.url}" class="action-btn btn-primary" download>
+                                <i class="fas fa-download"></i>
+                                <span>Tải video về máy</span>
+                            </a>
+                            
+                            <button onclick="copyToClipboard('${data.url}')" class="action-btn btn-secondary">
+                                <i class="fas fa-copy"></i>
+                                <span>Sao chép link</span>
+                            </button>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--light); border-radius: var(--radius);">
+                            <p style="color: var(--gray); font-size: 0.9rem;">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <strong>Lưu ý:</strong> Click chuột phải vào nút tải → "Lưu link thành..." để download.
+                            </p>
+                        </div>
+                    `;
+                    
+                    resultContainer.innerHTML = resultHTML;
+                    resultContainer.style.display = 'block';
+                    
+                } else {
+                    // Show error result
+                    let errorHTML = `
+                        <div class="result-header error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Không thể tải video</h3>
+                        </div>
+                        
+                        <div style="background: #fff5f5; padding: 1.5rem; border-radius: var(--radius);">
+                            <p style="color: #721c24; margin-bottom: 1rem;">${data.message || 'Đã xảy ra lỗi'}</p>
+                            
+                            ${data.alternatives ? `
+                            <div style="margin-top: 1rem;">
+                                <h4 style="color: #721c24; margin-bottom: 0.5rem;">Các giải pháp thay thế:</h4>
+                                <ul style="color: #721c24; padding-left: 1.5rem;">
+                                    ${data.alternatives.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            ` : ''}
+                            
+                            ${data.tutorial ? `
+                            <div style="margin-top: 1rem; padding: 1rem; background: #fed7d7; border-radius: var(--radius);">
+                                <h4 style="color: #742a2a; margin-bottom: 0.5rem;">Hướng dẫn tải thủ công:</h4>
+                                <p style="color: #742a2a;">${data.tutorial}</p>
+                            </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    
+                    resultContainer.innerHTML = errorHTML;
+                    resultContainer.style.display = 'block';
+                }
+                
+            } catch (error) {
+                showResult('error', `Lỗi kết nối: ${error.message}`);
+            } finally {
+                downloadBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+        
+        // Show result function
+        function showResult(type, message) {
+            const resultContainer = document.getElementById('resultContainer');
+            
+            if (type === 'success') {
+                resultContainer.innerHTML = `
+                    <div class="result-header success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thành công!</h3>
+                    </div>
+                    <p>${message}</p>
+                `;
+            } else {
+                resultContainer.innerHTML = `
+                    <div class="result-header error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Lỗi!</h3>
+                    </div>
+                    <p>${message}</p>
+                `;
+            }
+            
+            resultContainer.style.display = 'block';
+        }
+        
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Đã sao chép link vào clipboard!');
+            });
+        }
+        
+        // Check API status
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                document.getElementById('apiStatus').innerHTML = 
+                    `<i class="fas fa-circle"></i> API: ${data.status} (v${data.version})`;
+            } catch (error) {
+                document.getElementById('apiStatus').innerHTML = 
+                    `<i class="fas fa-circle" style="color:#ef4444"></i> API: Offline`;
+            }
+        }
+        
+        // Initialize
+        window.onload = function() {
+            checkAPIStatus();
+            console.log('Facebook Downloader ready!');
+            
+            // Auto focus URL input
+            document.getElementById('facebookUrl').focus();
+        };
+    </script>
+</body>
+</html>

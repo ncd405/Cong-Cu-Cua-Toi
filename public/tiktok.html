@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Downloader - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tiktok-preview {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 2rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .tiktok-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #000000, #25F4EE, #FE2C55, #000000);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .trending-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .trending-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .trending-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-toolbox"></i>
+                <span>ToolHub</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Trang Chủ</span>
+                </a>
+                <a href="facebook.html" class="nav-link">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="tiktok.html" class="nav-link active">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="#features" class="nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>Tính năng</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="downloader-container">
+                <!-- Header -->
+                <div class="downloader-header" style="background: linear-gradient(135deg, #000000, #25F4EE, #FE2C55);">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 1rem;">
+                        <div class="tool-icon tiktok-bg" style="width: 70px; height: 70px;">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h1>TikTok Downloader</h1>
+                    </div>
+                    <p>Tải video TikTok không watermark, chất lượng cao + nhạc gốc</p>
+                </div>
+
+                <!-- Content -->
+                <div class="downloader-content">
+                    <!-- TikTok Preview -->
+                    <div class="tiktok-preview">
+                        <div style="position: relative; z-index: 2; padding: 2rem; text-align: center; color: white;">
+                            <i class="fab fa-tiktok" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3 style="margin-bottom: 0.5rem;">No Watermark</h3>
+                            <p style="font-size: 0.9rem;">Video sạch, chất lượng 1080p</p>
+                        </div>
+                    </div>
+
+                    <!-- URL Input -->
+                    <div class="url-input-group">
+                        <label for="tiktokUrl">
+                            <i class="fas fa-music"></i> Dán link video TikTok:
+                        </label>
+                        <div class="url-input-wrapper">
+                            <input 
+                                type="url" 
+                                id="tiktokUrl" 
+                                class="url-input" 
+                                placeholder="https://vt.tiktok.com/..."
+                                value="https://vt.tiktok.com/ZSP11nGFh/">
+                            <span class="url-input-icon">
+                                <i class="fab fa-tiktok"></i>
+                            </span>
+                        </div>
+                        <p style="margin-top: 0.5rem; color: var(--gray); font-size: 0.9rem;">
+                            <i class="fas fa-info-circle"></i>
+                            Hỗ trợ: Video thường, video dài, slideshow
+                        </p>
+                    </div>
+
+                    <!-- Quality Selection -->
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">
+                            <i class="fas fa-hd"></i> Chọn chất lượng:
+                        </label>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="radio" name="quality" value="hd" checked>
+                                <span>HD (1080p)</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="radio" name="quality" value="sd">
+                                <span>SD (720p)</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="radio" name="quality" value="music">
+                                <span>Chỉ nhạc (MP3)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Download Button -->
+                    <button onclick="downloadTikTok()" class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        <span>Tải Video TikTok</span>
+                    </button>
+
+                    <!-- Loading -->
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Đang tải video TikTok không watermark...</p>
+                        <p style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            Đang xử lý: Tách watermark, tải nhạc gốc...
+                        </p>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="result-container" id="resultContainer">
+                        <!-- Result will be inserted here -->
+                    </div>
+
+                    <!-- Features -->
+                    <div id="features" style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--gray-light);">
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: var(--primary);">
+                            <i class="fas fa-crown"></i> Tính năng nổi bật
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                            <div style="text-align: center; padding: 1.5rem; background: var(--light); border-radius: var(--radius);">
+                                <i class="fas fa-ban" style="font-size: 2rem; color: var(--danger); margin-bottom: 1rem;"></i>
+                                <h4>No Watermark</h4>
+                                <p>Video sạch, không logo TikTok</p>
+                            </div>
+                            
+                            <div style="text-align: center; padding: 1.5rem; background: var(--light); border-radius: var(--radius);">
+                                <i class="fas fa-music" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                                <h4>MP3 Gốc</h4>
+                                <p>Tải nhạc riêng chất lượng cao</p>
+                            </div>
+                            
+                            <div style="text-align: center; padding: 1.5rem; background: var(--light); border-radius: var(--radius);">
+                                <i class="fas fa-hd" style="font-size: 2rem; color: var(--success); margin-bottom: 1rem;"></i>
+                                <h4>1080p HD</h4>
+                                <p>Chất lượng video tốt nhất</p>
+                            </div>
+                            
+                            <div style="text-align: center; padding: 1.5rem; background: var(--light); border-radius: var(--radius);">
+                                <i class="fas fa-bolt" style="font-size: 2rem; color: var(--warning); margin-bottom: 1rem;"></i>
+                                <h4>Nhanh chóng</h4>
+                                <p>Xử lý chỉ trong 5 giây</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>© 2024 ToolHub - TikTok Downloader | 
+                    <span id="apiStatus" style="color: #10b981;">
+                        <i class="fas fa-circle"></i> Đang kiểm tra API...
+                    </span>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Công cụ hoàn toàn miễn phí, hỗ trợ tải không giới hạn
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Download function
+        async function downloadTikTok() {
+            const url = document.getElementById('tiktokUrl').value.trim();
+            const downloadBtn = document.getElementById('downloadBtn');
+            const loading = document.getElementById('loading');
+            const resultContainer = document.getElementById('resultContainer');
+            
+            // Validate URL
+            if (!url) {
+                showResult('error', 'Vui lòng nhập URL video TikTok');
+                return;
+            }
+            
+            if (!url.includes('tiktok.com')) {
+                showResult('error', 'URL không phải là TikTok. Vui lòng kiểm tra lại.');
+                return;
+            }
+            
+            // Show loading
+            downloadBtn.disabled = true;
+            loading.style.display = 'block';
+            resultContainer.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/download/tiktok', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: url })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Get selected quality
+                    const quality = document.querySelector('input[name="quality"]:checked').value;
+                    
+                    // Show success result
+                    let resultHTML = `
+                        <div class="result-header success">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Tải thành công!</h3>
+                        </div>
+                        
+                        <div class="video-preview">
+                            <video controls style="width: 100%; height: 100%;">
+                                <source src="${data.url}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                        </div>
+                        
+                        <div class="video-info">
+                            <div class="info-row">
+                                <i class="fas fa-heading"></i>
+                                <span><strong>Tiêu đề:</strong> ${data.title || 'TikTok Video'}</span>
+                            </div>
+                            
+                            ${data.author ? `
+                            <div class="info-row">
+                                <i class="fas fa-user"></i>
+                                <span><strong>Tác giả:</strong> ${data.author}</span>
+                            </div>
+                            ` : ''}
+                            
+                            ${data.duration ? `
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <span><strong>Thời lượng:</strong> ${data.duration}s</span>
+                            </div>
+                            ` : ''}
+                            
+                            <div class="info-row">
+                                <i class="fas fa-info-circle"></i>
+                                <span><strong>Trạng thái:</strong> ${data.message || 'Sẵn sàng tải về'}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="${data.url}" class="action-btn btn-primary" download>
+                                <i class="fas fa-download"></i>
+                                <span>Tải video</span>
+                            </a>
+                            
+                            ${data.music ? `
+                            <a href="${data.music}" class="action-btn btn-secondary" download>
+                                <i class="fas fa-music"></i>
+                                <span>Tải nhạc MP3</span>
+                            </a>
+                            ` : ''}
+                            
+                            <button onclick="copyToClipboard('${data.url}')" class="action-btn" style="background: var(--dark);">
+                                <i class="fas fa-copy"></i>
+                                <span>Copy link</span>
+                            </button>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div style="background: var(--light); padding: 1rem; border-radius: var(--radius);">
+                                <p style="font-size: 0.9rem; color: var(--gray);">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <strong>Trên điện thoại:</strong> Giữ nút tải → Tải xuống
+                                </p>
+                            </div>
+                            <div style="background: var(--light); padding: 1rem; border-radius: var(--radius);">
+                                <p style="font-size: 0.9rem; color: var(--gray);">
+                                    <i class="fas fa-desktop"></i>
+                                    <strong>Trên máy tính:</strong> Click chuột phải → Lưu video thành
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    resultContainer.innerHTML = resultHTML;
+                    resultContainer.style.display = 'block';
+                    
+                } else {
+                    // Show error result
+                    let errorHTML = `
+                        <div class="result-header error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Không thể tải video</h3>
+                        </div>
+                        
+                        <div style="background: #fff5f5; padding: 1.5rem; border-radius: var(--radius);">
+                            <p style="color: #721c24; margin-bottom: 1rem;">${data.message || 'Đã xảy ra lỗi'}</p>
+                            
+                            ${data.tip ? `
+                            <div style="margin-top: 1rem; padding: 1rem; background: #fed7d7; border-radius: var(--radius);">
+                                <h4 style="color: #742a2a; margin-bottom: 0.5rem;">Gợi ý:</h4>
+                                <p style="color: #742a2a;">${data.tip}</p>
+                            </div>
+                            ` : ''}
+                            
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="color: #721c24; margin-bottom: 0.5rem;">Các giải pháp thay thế:</h4>
+                                <ul style="color: #721c24; padding-left: 1.5rem;">
+                                    <li>Thử lại với link TikTok khác</li>
+                                    <li>Kiểm tra xem video có bị chặn tải không</li>
+                                    <li>Dùng trình duyệt ẩn danh để sao chép link</li>
+                                    <li>Thử tải qua snaptik.app hoặc ssstik.io</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    
+                    resultContainer.innerHTML = errorHTML;
+                    resultContainer.style.display = 'block';
+                }
+                
+            } catch (error) {
+                showResult('error', `Lỗi kết nối: ${error.message}`);
+            } finally {
+                downloadBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+        
+        // Show result function
+        function showResult(type, message) {
+            const resultContainer = document.getElementById('resultContainer');
+            
+            if (type === 'success') {
+                resultContainer.innerHTML = `
+                    <div class="result-header success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thành công!</h3>
+                    </div>
+                    <p>${message}</p>
+                `;
+            } else {
+                resultContainer.innerHTML = `
+                    <div class="result-header error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Lỗi!</h3>
+                    </div>
+                    <p>${message}</p>
+                `;
+            }
+            
+            resultContainer.style.display = 'block';
+        }
+        
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Đã sao chép link vào clipboard!');
+            });
+        }
+        
+        // Check API status
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                document.getElementById('apiStatus').innerHTML = 
+                    `<i class="fas fa-circle"></i> API: ${data.status} (v${data.version})`;
+            } catch (error) {
+                document.getElementById('apiStatus').innerHTML = 
+                    `<i class="fas fa-circle" style="color:#ef4444"></i> API: Offline`;
+            }
+        }
+        
+        // Initialize
+        window.onload = function() {
+            checkAPIStatus();
+            console.log('TikTok Downloader ready!');
+            
+            // Auto focus URL input
+            document.getElementById('tiktokUrl').focus();
+        };
+    </script>
+</body>
+</html>
