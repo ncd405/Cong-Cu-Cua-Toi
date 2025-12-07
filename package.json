@@ -1,0 +1,12 @@
+{
+  "name": "cong-cu-cua-toi",
+  "version": "1.0.0",
+  "description": "Trang web công cụ tải video Facebook, TikTok",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
