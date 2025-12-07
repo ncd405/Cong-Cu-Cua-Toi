@@ -10,37 +10,214 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background: #0a0a0a;
+            background: #0f172a;
             color: white;
+        }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 30px;
         }
         h1 {
             color: #3b82f6;
-            text-align: center;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
         }
         .tool {
-            background: #1a1a1a;
-            padding: 20px;
-            margin: 20px 0;
+            background: #1e293b;
+            padding: 25px;
             border-radius: 10px;
+            border: 1px solid #334155;
+        }
+        h2 {
+            color: #e2e8f0;
+            margin-bottom: 15px;
+        }
+        .fb h2 { color: #1877F2; }
+        .tt h2 { color: #FF0050; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #0f172a;
+            border: 1px solid #475569;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .fb-btn {
+            background: #1877F2;
+            color: white;
+        }
+        .tt-btn {
+            background: #FF0050;
+            color: white;
+        }
+        .sec-btn {
+            background: #475569;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #status {
+            padding: 15px;
+            background: #1e293b;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            border-left: 4px solid #3b82f6;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
-    <h1>🔧 Công Cụ Của Tôi</h1>
-    <p style="text-align: center;">Công cụ tải video Facebook, TikTok</p>
+    <header>
+        <h1>🔧 Công Cụ Của Tôi</h1>
+        <p class="subtitle">Công cụ tải video Facebook & TikTok miễn phí</p>
+    </header>
     
-    <div class="tool">
-        <h2>Facebook Downloader</h2>
-        <p>Đang phát triển...</p>
+    <div class="container">
+        <div class="tool fb">
+            <h2>📘 Facebook Tools</h2>
+            <input type="text" id="fbUrl" placeholder="Dán link video Facebook...">
+            <button class="fb-btn" onclick="downloadFB()">⬇️ Tải Video</button>
+            <button class="sec-btn" onclick="savePost()">💾 Lưu Bài Viết</button>
+        </div>
+        
+        <div class="tool tt">
+            <h2>🎵 TikTok Tools</h2>
+            <input type="text" id="ttUrl" placeholder="Dán link video TikTok...">
+            <button class="tt-btn" onclick="downloadTT()">⬇️ Tải Video</button>
+            <button class="sec-btn" onclick="extractAudio()">🎵 Tách Nhạc</button>
+        </div>
     </div>
     
-    <div class="tool">
-        <h2>TikTok Downloader</h2>
-        <p>Đang phát triển...</p>
-    </div>
+    <div id="status"></div>
+    
+    <footer>
+        <p>© 2024 Công Cụ Của Tôi - Hoàn toàn miễn phí</p>
+        <p>Phiên bản 2.0.0 | API Status: <span id="apiStatus">Đang kiểm tra...</span></p>
+    </footer>
     
     <script>
-        console.log("Công Cụ Của Tôi");
+        const API_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api' 
+            : '/api';
+        
+        // Kiểm tra API status
+        fetch(API_URL + '/health')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('apiStatus').textContent = '✅ Đang hoạt động';
+                document.getElementById('apiStatus').style.color = '#10b981';
+            })
+            .catch(err => {
+                document.getElementById('apiStatus').textContent = '⚠️ Đang bảo trì';
+                document.getElementById('apiStatus').style.color = '#f59e0b';
+            });
+        
+        function showMessage(text, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = text;
+            status.style.display = 'block';
+            status.style.borderLeftColor = 
+                type === 'error' ? '#ef4444' :
+                type === 'success' ? '#10b981' : '#3b82f6';
+            
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 5000);
+        }
+        
+        async function downloadFB() {
+            const url = document.getElementById('fbUrl').value.trim();
+            if (!url) return showMessage('Vui lòng nhập URL', 'error');
+            
+            showMessage('Đang xử lý video Facebook...', 'info');
+            
+            try {
+                const res = await fetch(API_URL + '/facebook/download', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    showMessage(`✅ ${data.message} | Định dạng: ${data.data.formats.join(', ')}`, 'success');
+                } else {
+                    showMessage(`❌ ${data.error}`, 'error');
+                }
+            } catch {
+                showMessage('❌ Lỗi kết nối server', 'error');
+            }
+        }
+        
+        async function downloadTT() {
+            const url = document.getElementById('ttUrl').value.trim();
+            if (!url) return showMessage('Vui lòng nhập URL', 'error');
+            
+            showMessage('Đang xử lý video TikTok...', 'info');
+            
+            try {
+                const res = await fetch(API_URL + '/tiktok/download', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    showMessage(`✅ ${data.message} | Không watermark: ${data.data.watermark ? 'Không' : 'Có'}`, 'success');
+                } else {
+                    showMessage(`❌ ${data.error}`, 'error');
+                }
+            } catch {
+                showMessage('❌ Lỗi kết nối server', 'error');
+            }
+        }
+        
+        function savePost() {
+            showMessage('Tính năng đang phát triển...', 'info');
+        }
+        
+        function extractAudio() {
+            showMessage('Tính năng đang phát triển...', 'info');
+        }
+        
+        // Auto focus
+        document.getElementById('fbUrl').focus();
     </script>
 </body>
 </html>
