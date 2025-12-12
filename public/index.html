@@ -1,97 +1,242 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công Cụ Của Tôi v2.1.0 - Tải Video Facebook & TikTok Miễn Phí</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Công cụ tải video Facebook, TikTok miễn phí, không watermark, chất lượng cao. Phiên bản 2.1.0">
-    <meta name="keywords" content="tải video facebook, tải video tiktok, download facebook video, download tiktok video">
-    <meta name="author" content="Công Cụ Của Tôi">
-    <meta name="version" content="2.1.0">
-    
-    <!-- PWA -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0f172a">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+    <title>Công Cụ Của Tôi - Tải Video Facebook & TikTok</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #0f172a; 
+            color: white; 
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header { 
+            text-align: center; 
+            padding: 30px 0; 
+            border-bottom: 2px solid #6366f1;
+            margin-bottom: 40px;
+        }
+        .logo { 
+            color: #6366f1; 
+            font-size: 2.5rem; 
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subtitle { 
+            color: #94a3b8; 
+            font-size: 1.2rem;
+        }
+        .tool-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #6366f1;
+        }
+        .tool-title {
+            color: #6366f1;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px;
+            background: #334155;
+            border: 2px solid #475569;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+        .btn {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .status {
+            text-align: center;
+            margin: 30px 0;
+            padding: 15px;
+            background: #1e293b;
+            border-radius: 8px;
+            color: #10b981;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        .version {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo">
-                    <i class="fas fa-tools"></i>
-                    <span>Công Cụ Của Tôi <span class="version">v2.1.0</span></span>
-                </a>
-            </nav>
+    <div class="header">
+        <div class="logo">🔧 CÔNG CỤ CỦA TÔI</div>
+        <div class="subtitle">Tải video Facebook & TikTok miễn phí - <span class="version">v3.0</span></div>
+    </div>
+
+    <div class="status" id="status">
+        ✅ Website hoạt động bình thường | 🚀 Phiên bản mới nhất
+    </div>
+
+    <div class="tool-card">
+        <div class="tool-title">📥 Facebook Downloader</div>
+        <p>Tải video Facebook chất lượng cao, không watermark.</p>
+        
+        <div class="form-group">
+            <label>Link video Facebook:</label>
+            <input type="url" id="fbUrl" placeholder="https://facebook.com/watch?v=...">
         </div>
-    </header>
-
-    <main class="main">
-        <section class="hero">
-            <div class="container">
-                <h1 class="hero-title">🚀 Công Cụ Của Tôi v2.1.0</h1>
-                <p class="hero-subtitle">Website đã được cập nhật thành công!</p>
-                <p>Phiên bản mới nhất với đầy đủ tính năng:</p>
-                <ul>
-                    <li>✅ Tải video Facebook không watermark</li>
-                    <li>✅ Tải video TikTok không logo</li>
-                    <li>✅ Dark/Light mode</li>
-                    <li>✅ Responsive design</li>
-                    <li>✅ PWA support</li>
-                </ul>
-                <div class="update-time">
-                    Cập nhật lúc: $(date +"%H:%M %d/%m/%Y")
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>© 2024 Công Cụ Của Tôi v2.1.0</p>
-            <p>Deployed on Vercel | MIT License</p>
+        
+        <div class="form-group">
+            <label>Chất lượng:</label>
+            <select id="fbQuality">
+                <option value="best">Tốt nhất (tự động)</option>
+                <option value="1080">1080p Full HD</option>
+                <option value="720">720p HD</option>
+            </select>
         </div>
-    </footer>
+        
+        <button class="btn" onclick="downloadFacebook()">
+            📥 TẢI VIDEO FACEBOOK
+        </button>
+    </div>
 
-    <style>
-    .hero-title {
-        color: #6366f1;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-    .hero-subtitle {
-        color: #10b981;
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    .version {
-        background: #6366f1;
-        color: white;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        margin-left: 8px;
-    }
-    .update-time {
-        margin-top: 2rem;
-        color: #94a3b8;
-        font-style: italic;
-    }
-    </style>
+    <div class="tool-card">
+        <div class="tool-title">⚡ TikTok Downloader</div>
+        <p>Tải video TikTok không logo, có thể tách audio MP3.</p>
+        
+        <div class="form-group">
+            <label>Link video TikTok:</label>
+            <input type="url" id="ttUrl" placeholder="https://tiktok.com/@user/video/...">
+        </div>
+        
+        <div class="form-group">
+            <label>Loại file:</label>
+            <select id="ttType">
+                <option value="video">Video (MP4)</option>
+                <option value="audio">Audio (MP3)</option>
+            </select>
+        </div>
+        
+        <button class="btn" onclick="downloadTikTok()">
+            ⚡ TẢI VIDEO TIKTOK
+        </button>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Công Cụ Của Tôi v3.0</p>
+        <p>🌐 https://cong-cu-cua-toi.vercel.app | 📧 support@congcucuatoi.com</p>
+        <p id="updateTime">Cập nhật: Đang tải...</p>
+    </div>
+
+    <script>
+        // Cập nhật thời gian
+        document.getElementById('updateTime').textContent = 
+            'Cập nhật: ' + new Date().toLocaleString('vi-VN');
+        
+        // Chức năng tải Facebook
+        function downloadFacebook() {
+            const url = document.getElementById('fbUrl').value;
+            const quality = document.getElementById('fbQuality').value;
+            
+            if (!url) {
+                alert('Vui lòng nhập link video Facebook!');
+                return;
+            }
+            
+            if (!url.includes('facebook.com') && !url.includes('fb.watch')) {
+                alert('Link Facebook không hợp lệ!');
+                return;
+            }
+            
+            document.getElementById('status').innerHTML = 
+                '⏳ Đang xử lý video Facebook...';
+            document.getElementById('status').style.color = '#f59e0b';
+            
+            // Mock API call
+            setTimeout(() => {
+                document.getElementById('status').innerHTML = 
+                    '✅ Video Facebook đã sẵn sàng! Nhấn OK để tải.';
+                document.getElementById('status').style.color = '#10b981';
+                
+                if (confirm('Video Facebook đã sẵn sàng!\n\nChất lượng: ' + quality + '\n\nTải về ngay?')) {
+                    alert('📥 Đang tải video... (Demo mode)');
+                }
+            }, 2000);
+        }
+        
+        // Chức năng tải TikTok
+        function downloadTikTok() {
+            const url = document.getElementById('ttUrl').value;
+            const type = document.getElementById('ttType').value;
+            
+            if (!url) {
+                alert('Vui lòng nhập link video TikTok!');
+                return;
+            }
+            
+            if (!url.includes('tiktok.com')) {
+                alert('Link TikTok không hợp lệ!');
+                return;
+            }
+            
+            document.getElementById('status').innerHTML = 
+                '⏳ Đang xử lý video TikTok...';
+            document.getElementById('status').style.color = '#f59e0b';
+            
+            // Mock API call
+            setTimeout(() => {
+                document.getElementById('status').innerHTML = 
+                    '✅ Video TikTok đã sẵn sàng! ' + (type === 'audio' ? '(MP3 Audio)' : '(Video MP4)');
+                document.getElementById('status').style.color = '#10b981';
+                
+                if (confirm('Video TikTok đã sẵn sàng!\n\nLoại: ' + 
+                    (type === 'audio' ? 'Audio MP3' : 'Video MP4') + 
+                    '\n\nTải về ngay?')) {
+                    alert('📥 Đang tải ' + (type === 'audio' ? 'audio MP3' : 'video') + '... (Demo mode)');
+                }
+            }, 1500);
+        }
+        
+        // Keyboard shortcut: Ctrl+Enter
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                const active = document.activeElement;
+                if (active.id === 'fbUrl') downloadFacebook();
+                if (active.id === 'ttUrl') downloadTikTok();
+            }
+        });
+    </script>
 </body>
 </html>
