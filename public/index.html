@@ -3,655 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công Cụ Của Tôi - Tải Video Facebook & TikTok Miễn Phí</title>
+    <title>Công Cụ Của Tôi v2.1.0 - Tải Video Facebook & TikTok Miễn Phí</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Công cụ tải video Facebook, TikTok miễn phí, không watermark, chất lượng cao. Hoạt động trên mọi thiết bị, không cần đăng ký.">
-    <meta name="keywords" content="tải video facebook, tải video tiktok, download facebook video, download tiktok video, công cụ miễn phí">
+    <meta name="description" content="Công cụ tải video Facebook, TikTok miễn phí, không watermark, chất lượng cao. Phiên bản 2.1.0">
+    <meta name="keywords" content="tải video facebook, tải video tiktok, download facebook video, download tiktok video">
     <meta name="author" content="Công Cụ Của Tôi">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cong-cu-cua-toi.vercel.app/">
-    <meta property="og:title" content="Công Cụ Của Tôi - Tải Video Facebook & TikTok Miễn Phí">
-    <meta property="og:description" content="Tải video Facebook, TikTok miễn phí, không watermark, chất lượng cao.">
-    <meta property="og:image" content="https://cong-cu-cua-toi.vercel.app/assets/img/og-image.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://cong-cu-cua-toi.vercel.app/">
-    <meta property="twitter:title" content="Công Cụ Của Tôi - Tải Video Facebook & TikTok Miễn Phí">
-    <meta property="twitter:description" content="Tải video Facebook, TikTok miễn phí, không watermark, chất lượng cao.">
-    <meta property="twitter:image" content="https://cong-cu-cua-toi.vercel.app/assets/img/og-image.png">
+    <meta name="version" content="2.1.0">
     
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0f172a">
     
-    <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
-    <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/main.css">
     
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Công Cụ Của Tôi",
-        "description": "Công cụ tải video Facebook và TikTok miễn phí, không watermark",
-        "url": "https://cong-cu-cua-toi.vercel.app",
-        "applicationCategory": "UtilityApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "VND"
-        }
-    }
-    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
+    <header class="header">
         <div class="container">
             <nav class="navbar">
                 <a href="/" class="logo">
-                    <i class="fas fa-tools logo-icon"></i>
-                    <span>Công Cụ Của Tôi</span>
+                    <i class="fas fa-tools"></i>
+                    <span>Công Cụ Của Tôi <span class="version">v2.1.0</span></span>
                 </a>
-                
-                <ul class="nav-menu">
-                    <li>
-                        <a href="#home" class="nav-link active">
-                            <i class="fas fa-home"></i> Trang chủ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tools" class="nav-link">
-                            <i class="fas fa-tools"></i> Công cụ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#features" class="nav-link">
-                            <i class="fas fa-star"></i> Tính năng
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#how-to" class="nav-link">
-                            <i class="fas fa-question-circle"></i> Hướng dẫn
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link" onclick="app.showHistory()">
-                            <i class="fas fa-history"></i> Lịch sử
-                        </a>
-                    </li>
-                    <li>
-                        <span class="nav-link" id="apiStatus">
-                            <i class="fas fa-circle-notch loading"></i>
-                            <span>API</span>
-                        </span>
-                    </li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <label class="theme-switch">
-                        <input type="checkbox" id="themeToggle">
-                        <span class="theme-slider"></span>
-                    </label>
-                    
-                    <button class="btn btn-sm btn-outline" onclick="app.showSettings()">
-                        <i class="fas fa-cog"></i>
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="btn btn-sm btn-outline mobile-menu-btn d-none">
-                    <i class="fas fa-bars"></i>
-                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1 class="hero-title text-gradient">
-                Tải Video <span class="text-primary">Facebook & TikTok</span>
-                <br>
-                <span class="text-secondary">Miễn Phí & Không Watermark</span>
-            </h1>
-            
-            <p class="hero-subtitle">
-                Công cụ mạnh mẽ giúp bạn tải video chất lượng cao từ Facebook và TikTok.
-                <br>
-                Hoàn toàn miễn phí, không cần đăng ký, hoạt động 24/7 trên mọi thiết bị.
-            </p>
-            
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">2+</div>
-                    <div>Công Cụ Chính</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div>Miễn Phí</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div>Hoạt Động</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div>Mọi Thiết Bị</div>
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">🚀 Công Cụ Của Tôi v2.1.0</h1>
+                <p class="hero-subtitle">Website đã được cập nhật thành công!</p>
+                <p>Phiên bản mới nhất với đầy đủ tính năng:</p>
+                <ul>
+                    <li>✅ Tải video Facebook không watermark</li>
+                    <li>✅ Tải video TikTok không logo</li>
+                    <li>✅ Dark/Light mode</li>
+                    <li>✅ Responsive design</li>
+                    <li>✅ PWA support</li>
+                </ul>
+                <div class="update-time">
+                    Cập nhật lúc: $(date +"%H:%M %d/%m/%Y")
                 </div>
             </div>
-            
-            <!-- Quick Actions -->
-            <div class="quick-actions mt-8">
-                <div class="btn-group">
-                    <a href="#tools" class="btn btn-primary btn-lg">
-                        <i class="fas fa-rocket"></i> Bắt đầu ngay
-                    </a>
-                    <a href="#how-to" class="btn btn-outline btn-lg">
-                        <i class="fas fa-play-circle"></i> Xem hướng dẫn
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Main Tools Section -->
-    <section class="section section-sm" id="tools">
-        <div class="container">
-            <div class="section-header text-center mb-8">
-                <h2 class="section-title">Công Cụ Chính</h2>
-                <p class="section-subtitle">Chọn công cụ bạn cần và bắt đầu tải video ngay</p>
-            </div>
-            
-            <div class="tools-grid">
-                <!-- Facebook Tool Card -->
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon fb-icon">
-                            <i class="fab fa-facebook-square fa-3x"></i>
-                        </div>
-                        <div class="tool-badge badge badge-primary">Phổ biến</div>
-                    </div>
-                    
-                    <h3 class="tool-title">
-                        <i class="fab fa-facebook"></i> Công Cụ Facebook
-                    </h3>
-                    
-                    <p class="tool-description">
-                        Tải video Facebook chất lượng cao, không watermark. 
-                        Hỗ trợ đa dạng chất lượng từ 360p đến Full HD 1080p.
-                        Tương thích với mọi định dạng video.
-                    </p>
-                    
-                    <form id="fbForm" class="tool-form">
-                        <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-link"></i> Dán link video Facebook
-                            </label>
-                            <input 
-                                type="url" 
-                                id="fbUrl" 
-                                class="form-control"
-                                placeholder="https://www.facebook.com/watch/?v=..." 
-                                autocomplete="off"
-                                spellcheck="false"
-                                required>
-                            <div class="form-hint">
-                                VD: https://www.facebook.com/username/videos/123456789
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Chất lượng video</label>
-                            <select id="fbQuality" class="form-control">
-                                <option value="best">Tốt nhất (tự động)</option>
-                                <option value="1080">1080p Full HD</option>
-                                <option value="720">720p HD</option>
-                                <option value="480">480p</option>
-                                <option value="360">360p</option>
-                            </select>
-                        </div>
-                        
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-primary btn-block" id="downloadFbBtn">
-                                <i class="fas fa-download"></i> Tải Video Facebook
-                            </button>
-                            <button type="button" class="btn btn-outline btn-block" onclick="app.clearHistory()">
-                                <i class="fas fa-trash"></i> Xóa lịch sử
-                            </button>
-                        </div>
-                    </form>
-                    
-                    <div class="tool-features mt-4">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle text-success"></i>
-                            <span>Không watermark</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle text-success"></i>
-                            <span>Chất lượng cao</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle text-success"></i>
-                            <span>Tải nhanh</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TikTok Tool Card -->
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tt-icon">
-                            <i class="fab fa-tiktok fa-3x"></i>
-                        </div>
-                        <div class="tool-badge badge badge-success">Mới</div>
-                    </div>
-                    
-                    <h3 class="tool-title">
-                        <i class="fab fa-tiktok"></i> Công Cụ TikTok
-                    </h3>
-                    
-                    <p class="tool-description">
-                        Tải video TikTok không watermark, chất lượng cao. 
-                        Tách nhạc MP3 từ video, hỗ trợ tải nhanh không giới hạn.
-                        Giữ nguyên metadata và thông tin video.
-                    </p>
-                    
-                    <form id="ttForm" class="tool-form">
-                        <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-link"></i> Dán link video TikTok
-                            </label>
-                            <input 
-                                type="url" 
-                                id="ttUrl" 
-                                class="form-control"
-                                placeholder="https://www.tiktok.com/@username/video/..." 
-                                autocomplete="off"
-                                spellcheck="false"
-                                required>
-                            <div class="form-hint">
-                                VD: https://www.tiktok.com/@username/video/123456789
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Tùy chọn</label>
-                            <select id="ttOptions" class="form-control">
-                                <option value="video">Chỉ video</option>
-                                <option value="audio">Chỉ audio (MP3)</option>
-                                <option value="both">Video + Audio</option>
-                            </select>
-                        </div>
-                        
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-primary btn-block" id="downloadTtBtn">
-                                <i class="fas fa-download"></i> Tải Video TikTok
-                            </button>
-                            <button type="button" class="btn btn-outline btn-block" onclick="app.showSettings()">
-                                <i class="fas fa-cog"></i> Cài đặt
-                            </button>
-                        </div>
-                    </form>
-                    
-                    <div class="tool-features mt-4">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle text-success"></i>
-                            <span>Không logo TikTok</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle text-success"></i>
-                            <span>Tách âm thanh</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle text-success"></i>
-                            <span>Đa định dạng</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section" id="features" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header text-center mb-8">
-                <h2 class="section-title">Tại Sao Chọn Chúng Tôi?</h2>
-                <p class="section-subtitle">Những tính năng nổi bật làm nên sự khác biệt</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Tốc Độ Cao</h3>
-                    <p>Tải video chỉ trong vài giây với tốc độ cực nhanh, không phải chờ đợi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>An Toàn & Riêng Tư</h3>
-                    <p>Không lưu trữ dữ liệu người dùng, bảo mật tuyệt đối, không theo dõi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
-                    <h3>Không Giới Hạn</h3>
-                    <p>Tải không giới hạn số lượng video, hoàn toàn miễn phí mãi mãi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Đa Nền Tảng</h3>
-                    <p>Hoạt động trên mọi thiết bị: điện thoại, máy tính, tablet.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-hd"></i>
-                    </div>
-                    <h3>Chất Lượng Cao</h3>
-                    <p>Hỗ trợ video độ phân giải lên đến 4K, giữ nguyên chất lượng gốc.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Hỗ Trợ 24/7</h3>
-                    <p>Hệ thống hoạt động liên tục, hỗ trợ kỹ thuật mọi lúc.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How-To Section -->
-    <section class="section" id="how-to">
-        <div class="container">
-            <div class="section-header text-center mb-8">
-                <h2 class="section-title">Hướng Dẫn Sử Dụng</h2>
-                <p class="section-subtitle">3 bước đơn giản để tải video</p>
-            </div>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Sao chép link video</h3>
-                        <p>Truy cập Facebook hoặc TikTok, mở video bạn muốn tải và sao chép đường link.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Dán link vào công cụ</h3>
-                        <p>Dán link đã sao chép vào ô tương ứng trên website và chọn chất lượng.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Tải video về máy</h3>
-                        <p>Nhấn nút tải và chờ vài giây để video được xử lý và tải về máy của bạn.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Tutorial (Placeholder) -->
-            <div class="tutorial-video mt-8 text-center">
-                <div class="video-placeholder" style="
-                    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                    border-radius: var(--radius-xl);
-                    padding: 4rem;
-                    margin: 0 auto;
-                    max-width: 800px;
-                ">
-                    <i class="fas fa-play-circle fa-5x" style="color: white; margin-bottom: 1rem;"></i>
-                    <h3 style="color: white;">Video hướng dẫn chi tiết</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Đang cập nhật...</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section section-sm" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header text-center mb-8">
-                <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
-                <p class="section-subtitle">Tìm câu trả lời cho thắc mắc của bạn</p>
-            </div>
-            
-            <div class="faq">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Có cần đăng ký tài khoản không?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Không! Công cụ hoàn toàn miễn phí và không yêu cầu đăng ký tài khoản.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Video có bị mất chất lượng không?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Không! Video được tải về với chất lượng gốc, giữ nguyên độ phân giải và bitrate.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Có giới hạn số lượng tải không?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Không! Bạn có thể tải không giới hạn số lượng video.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Có hoạt động trên điện thoại không?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Có! Website được thiết kế responsive và hoạt động tốt trên mọi thiết bị di động.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="logo">
-                        <i class="fas fa-tools"></i> Công Cụ Của Tôi
-                    </h3>
-                    <p>Cung cấp công cụ miễn phí, mạnh mẽ cho cộng đồng người dùng Việt Nam.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Công Cụ</h4>
-                    <div class="footer-links">
-                        <a href="#tools">Tải video Facebook</a>
-                        <a href="#tools">Tải video TikTok</a>
-                        <a href="#">Tách nhạc MP3</a>
-                        <a href="#">Chuyển đổi video</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Hỗ Trợ</h4>
-                    <div class="footer-links">
-                        <a href="#how-to">Hướng dẫn sử dụng</a>
-                        <a href="#faq">Câu hỏi thường gặp</a>
-                        <a href="#">Liên hệ hỗ trợ</a>
-                        <a href="#">Báo lỗi</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Kết nối</h4>
-                    <div class="social-links">
-                        <a href="https://github.com/ncd405/Cong-Cu-Cua-Toi" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <a href="mailto:support@congcucuatoi.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="newsletter mt-4">
-                        <p>Nhận thông báo cập nhật</p>
-                        <div class="input-group">
-                            <input type="email" placeholder="Email của bạn" class="form-control">
-                            <button class="btn btn-primary">Đăng ký</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2024 Công Cụ Của Tôi. Tất cả quyền được bảo lưu.</p>
-                <div class="footer-legal">
-                    <a href="#">Điều khoản sử dụng</a>
-                    <span>•</span>
-                    <a href="#">Chính sách bảo mật</a>
-                    <span>•</span>
-                    <a href="#">Cookie Policy</a>
-                </div>
-                <p class="mt-2" style="font-size: 0.875rem; color: var(--text-muted);">
-                    Phiên bản 2.0.0 | Built with ❤️ for the community
-                </p>
-            </div>
+            <p>© 2024 Công Cụ Của Tôi v2.1.0</p>
+            <p>Deployed on Vercel | MIT License</p>
         </div>
     </footer>
 
-    <!-- Modals -->
-    <div id="downloadModal" class="modal">
-        <div class="modal-content">
-            <!-- Dynamic content will be inserted here -->
-        </div>
-    </div>
-    
-    <div id="settingsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4>Cài đặt</h4>
-                <button class="btn btn-sm btn-outline" onclick="ui.hideModal('settingsModal')">
-                    &times;
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="settings-group">
-                    <h5>Chất lượng mặc định</h5>
-                    <select class="form-control">
-                        <option value="best">Tốt nhất</option>
-                        <option value="1080">1080p</option>
-                        <option value="720">720p</option>
-                        <option value="480">480p</option>
-                    </select>
-                </div>
-                
-                <div class="settings-group mt-4">
-                    <h5>Định dạng</h5>
-                    <select class="form-control">
-                        <option value="mp4">MP4</option>
-                        <option value="webm">WebM</option>
-                        <option value="avi">AVI</option>
-                    </select>
-                </div>
-                
-                <div class="settings-group mt-4">
-                    <h5>Giao diện</h5>
-                    <div class="form-check">
-                        <input type="checkbox" id="darkMode" class="form-check-input" checked>
-                        <label for="darkMode" class="form-check-label">Chế độ tối</label>
-                    </div>
-                    <div class="form-check mt-2">
-                        <input type="checkbox" id="animations" class="form-check-input" checked>
-                        <label for="animations" class="form-check-label">Hiệu ứng</label>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="ui.hideModal('settingsModal')">
-                    Hủy
-                </button>
-                <button class="btn btn-primary" onclick="ui.showToast('Đã lưu cài đặt', 'success')">
-                    Lưu thay đổi
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="loading-content text-center">
-            <div class="loading"></div>
-            <p class="mt-4">Đang xử lý...</p>
-            <div class="progress-bar mt-4">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Container (auto-created by JS) -->
-    
-    <!-- JavaScript -->
-    <script src="/assets/js/app.js"></script>
-    
-    <!-- Service Worker -->
-    <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js');
-        });
+    <style>
+    .hero-title {
+        color: #6366f1;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
-    </script>
+    .hero-subtitle {
+        color: #10b981;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .version {
+        background: #6366f1;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-left: 8px;
+    }
+    .update-time {
+        margin-top: 2rem;
+        color: #94a3b8;
+        font-style: italic;
+    }
+    </style>
 </body>
 </html>
