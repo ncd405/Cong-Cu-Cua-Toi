@@ -1,69 +1,136 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công Cụ Của Tôi - Tải Video Facebook & TikTok</title>
+    <title>Công Cụ Của Tôi v3.1 - Tải Video Facebook & TikTok</title>
     <style>
+        /* VARIABLES */
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+        }
+        
+        /* BASE STYLES */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, sans-serif; 
-            background: #0f172a; 
-            color: white; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: var(--bg-primary); 
+            color: var(--text-primary); 
             padding: 20px;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            transition: background 0.3s;
         }
+        
+        /* HEADER */
         .header { 
             text-align: center; 
             padding: 30px 0; 
-            border-bottom: 2px solid #6366f1;
-            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .logo { 
-            color: #6366f1; 
-            font-size: 2.5rem; 
+            color: var(--primary); 
+            font-size: 2.2rem; 
             font-weight: bold;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .subtitle { 
-            color: #94a3b8; 
-            font-size: 1.2rem;
+        .version { 
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: normal;
         }
+        
+        /* CONTROLS */
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .theme-toggle, .history-btn {
+            background: var(--bg-secondary);
+            border: 2px solid var(--primary);
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover, .history-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* TOOL CARDS */
         .tool-card {
-            background: #1e293b;
+            background: var(--bg-secondary);
             border-radius: 12px;
             padding: 25px;
             margin: 25px 0;
-            border-left: 5px solid #6366f1;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .tool-card:hover {
+            transform: translateY(-3px);
         }
         .tool-title {
-            color: #6366f1;
+            color: var(--primary);
             font-size: 1.5rem;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        
+        /* FORMS */
         .form-group {
             margin: 20px 0;
+        }
+        label {
+            display: block;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
         }
         input, select {
             width: 100%;
             padding: 14px;
-            background: #334155;
-            border: 2px solid #475569;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
             border-radius: 8px;
-            color: white;
+            color: var(--text-primary);
             font-size: 16px;
-            margin-top: 8px;
+            transition: border 0.3s;
         }
         input:focus, select:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary);
         }
+        
+        /* BUTTONS */
         .btn {
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            background: linear-gradient(135deg, var(--primary), #4f46e5);
             color: white;
             border: none;
             padding: 16px 32px;
@@ -73,49 +140,162 @@
             cursor: pointer;
             width: 100%;
             margin-top: 10px;
-            transition: transform 0.2s;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 2px solid var(--primary);
+        }
+        
+        /* STATUS & NOTIFICATIONS */
         .status {
             text-align: center;
             margin: 30px 0;
             padding: 15px;
-            background: #1e293b;
+            background: var(--bg-secondary);
             border-radius: 8px;
-            color: #10b981;
+            color: var(--secondary);
+            border-left: 4px solid var(--secondary);
         }
+        
+        /* HISTORY PANEL */
+        .history-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100vh;
+            background: var(--bg-primary);
+            border-left: 2px solid var(--primary);
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+        }
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .history-item {
+            background: var(--bg-secondary);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        .history-platform {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .history-time {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* FOOTER */
         .footer {
             text-align: center;
             margin-top: 50px;
             padding-top: 20px;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
         }
-        .version {
-            color: #f59e0b;
-            font-weight: bold;
+        
+        /* UTILITIES */
+        .copy-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .share-btn {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 5px;
+            transition: all 0.3s;
+        }
+        .share-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .history-panel {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- HEADER -->
     <div class="header">
-        <div class="logo">🔧 CÔNG CỤ CỦA TÔI</div>
-        <div class="subtitle">Tải video Facebook & TikTok miễn phí - <span class="version">v3.0</span></div>
+        <div class="logo">
+            🔧 CÔNG CỤ CỦA TÔI <span class="version">v3.1</span>
+        </div>
+        <div class="controls">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                🌓 Theme
+            </button>
+            <button class="history-btn" onclick="toggleHistory()">
+                📜 History
+            </button>
+        </div>
     </div>
 
+    <!-- STATUS -->
     <div class="status" id="status">
-        ✅ Website hoạt động bình thường | 🚀 Phiên bản mới nhất
+        ✅ Website hoạt động | 🚀 Phiên bản 3.1 với lịch sử download & dark/light mode
     </div>
 
+    <!-- FACEBOOK DOWNLOADER -->
     <div class="tool-card">
         <div class="tool-title">📥 Facebook Downloader</div>
         <p>Tải video Facebook chất lượng cao, không watermark.</p>
         
         <div class="form-group">
             <label>Link video Facebook:</label>
-            <input type="url" id="fbUrl" placeholder="https://facebook.com/watch?v=...">
+            <div style="display: flex; gap: 10px;">
+                <input type="url" id="fbUrl" placeholder="https://facebook.com/watch?v=...">
+                <button class="copy-btn" onclick="copyToClipboard('fbUrl')">📋</button>
+            </div>
         </div>
         
         <div class="form-group">
@@ -124,21 +304,32 @@
                 <option value="best">Tốt nhất (tự động)</option>
                 <option value="1080">1080p Full HD</option>
                 <option value="720">720p HD</option>
+                <option value="480">480p</option>
             </select>
         </div>
         
         <button class="btn" onclick="downloadFacebook()">
-            📥 TẢI VIDEO FACEBOOK
+            <span>📥</span> TẢI VIDEO FACEBOOK
         </button>
+        
+        <div class="action-buttons">
+            <button class="btn-secondary" onclick="shareLink('fbUrl', 'Facebook')">
+                📤 Share
+            </button>
+        </div>
     </div>
 
+    <!-- TIKTOK DOWNLOADER -->
     <div class="tool-card">
         <div class="tool-title">⚡ TikTok Downloader</div>
         <p>Tải video TikTok không logo, có thể tách audio MP3.</p>
         
         <div class="form-group">
             <label>Link video TikTok:</label>
-            <input type="url" id="ttUrl" placeholder="https://tiktok.com/@user/video/...">
+            <div style="display: flex; gap: 10px;">
+                <input type="url" id="ttUrl" placeholder="https://tiktok.com/@user/video/...">
+                <button class="copy-btn" onclick="copyToClipboard('ttUrl')">📋</button>
+            </div>
         </div>
         
         <div class="form-group">
@@ -146,95 +337,320 @@
             <select id="ttType">
                 <option value="video">Video (MP4)</option>
                 <option value="audio">Audio (MP3)</option>
+                <option value="both">Cả video và audio</option>
             </select>
         </div>
         
         <button class="btn" onclick="downloadTikTok()">
-            ⚡ TẢI VIDEO TIKTOK
+            <span>⚡</span> TẢI VIDEO TIKTOK
+        </button>
+        
+        <div class="action-buttons">
+            <button class="btn-secondary" onclick="shareLink('ttUrl', 'TikTok')">
+                📤 Share
+            </button>
+        </div>
+    </div>
+
+    <!-- HISTORY PANEL -->
+    <div class="history-panel" id="historyPanel">
+        <div class="history-header">
+            <h3>📜 Lịch sử Download</h3>
+            <button onclick="toggleHistory()" style="background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer;">
+                ✕
+            </button>
+        </div>
+        <div id="historyList">
+            <!-- History items will be added here -->
+        </div>
+        <button class="btn" onclick="clearHistory()" style="margin-top: 20px;">
+            🗑️ Xóa lịch sử
         </button>
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
-        <p>© 2024 Công Cụ Của Tôi v3.0</p>
+        <p>© 2024 Công Cụ Của Tôi v3.1</p>
         <p>🌐 https://cong-cu-cua-toi.vercel.app | 📧 support@congcucuatoi.com</p>
         <p id="updateTime">Cập nhật: Đang tải...</p>
+        <p id="downloadCount">Đã tải: 0 video</p>
     </div>
 
     <script>
-        // Cập nhật thời gian
-        document.getElementById('updateTime').textContent = 
-            'Cập nhật: ' + new Date().toLocaleString('vi-VN');
+        // ===== STATE MANAGEMENT =====
+        let downloadHistory = JSON.parse(localStorage.getItem('downloadHistory') || '[]');
+        let downloadCount = parseInt(localStorage.getItem('downloadCount') || '0');
+        let currentTheme = localStorage.getItem('theme') || 'dark';
         
-        // Chức năng tải Facebook
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Update time
+            document.getElementById('updateTime').textContent = 
+                'Cập nhật: ' + new Date().toLocaleString('vi-VN');
+            
+            // Update download count
+            document.getElementById('downloadCount').textContent = 
+                'Đã tải: ' + downloadCount + ' video';
+            
+            // Load history
+            renderHistory();
+        });
+        
+        // ===== THEME TOGGLE =====
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            showNotification('Đã chuyển sang theme ' + (currentTheme === 'dark' ? 'tối' : 'sáng'));
+        }
+        
+        // ===== HISTORY FUNCTIONS =====
+        function toggleHistory() {
+            const panel = document.getElementById('historyPanel');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function renderHistory() {
+            const historyList = document.getElementById('historyList');
+            if (downloadHistory.length === 0) {
+                historyList.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Chưa có lịch sử download</p>';
+                return;
+            }
+            
+            historyList.innerHTML = downloadHistory.map((item, index) => `
+                <div class="history-item">
+                    <div class="history-platform">
+                        ${item.platform === 'facebook' ? '📥 Facebook' : '⚡ TikTok'} 
+                        <span style="float: right; color: ${item.success ? '#10b981' : '#ef4444'}">
+                            ${item.success ? '✅' : '❌'}
+                        </span>
+                    </div>
+                    <div style="font-size: 0.9rem; margin: 5px 0; word-break: break-all;">
+                        ${item.url.substring(0, 50)}...
+                    </div>
+                    <div class="history-time">
+                        ${new Date(item.time).toLocaleString('vi-VN')}
+                        ${item.quality ? ' • ' + item.quality : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function addToHistory(platform, url, quality, success = true) {
+            const historyItem = {
+                platform,
+                url,
+                quality,
+                success,
+                time: new Date().toISOString()
+            };
+            
+            downloadHistory.unshift(historyItem);
+            if (downloadHistory.length > 20) {
+                downloadHistory = downloadHistory.slice(0, 20);
+            }
+            
+            localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+            
+            if (success) {
+                downloadCount++;
+                localStorage.setItem('downloadCount', downloadCount);
+                document.getElementById('downloadCount').textContent = 
+                    'Đã tải: ' + downloadCount + ' video';
+            }
+            
+            renderHistory();
+        }
+        
+        function clearHistory() {
+            if (confirm('Xóa toàn bộ lịch sử download?')) {
+                downloadHistory = [];
+                localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+                renderHistory();
+                showNotification('Đã xóa lịch sử download');
+            }
+        }
+        
+        // ===== COPY TO CLIPBOARD =====
+        function copyToClipboard(inputId) {
+            const input = document.getElementById(inputId);
+            input.select();
+            input.setSelectionRange(0, 99999);
+            
+            try {
+                navigator.clipboard.writeText(input.value);
+                showNotification('Đã sao chép link vào clipboard!');
+            } catch (err) {
+                // Fallback for older browsers
+                document.execCommand('copy');
+                showNotification('Đã sao chép link!');
+            }
+        }
+        
+        // ===== SHARE LINK =====
+        function shareLink(inputId, platform) {
+            const input = document.getElementById(inputId);
+            const url = input.value;
+            
+            if (!url) {
+                showNotification('Vui lòng nhập link trước khi chia sẻ!', 'error');
+                return;
+            }
+            
+            const shareText = `Tải video ${platform} miễn phí từ: ${url}\n\n👉 Sử dụng Công Cụ Của Tôi: https://cong-cu-cua-toi.vercel.app`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `Tải video ${platform}`,
+                    text: shareText,
+                    url: 'https://cong-cu-cua-toi.vercel.app'
+                }).catch(() => {
+                    // Fallback to copy
+                    navigator.clipboard.writeText(shareText);
+                    showNotification('Đã sao chép link chia sẻ!');
+                });
+            } else {
+                navigator.clipboard.writeText(shareText);
+                showNotification('Đã sao chép link chia sẻ vào clipboard!');
+            }
+        }
+        
+        // ===== DOWNLOAD FUNCTIONS =====
         function downloadFacebook() {
-            const url = document.getElementById('fbUrl').value;
+            const url = document.getElementById('fbUrl').value.trim();
             const quality = document.getElementById('fbQuality').value;
             
             if (!url) {
-                alert('Vui lòng nhập link video Facebook!');
+                showNotification('Vui lòng nhập link video Facebook!', 'error');
                 return;
             }
             
             if (!url.includes('facebook.com') && !url.includes('fb.watch')) {
-                alert('Link Facebook không hợp lệ!');
+                showNotification('Link Facebook không hợp lệ!', 'error');
                 return;
             }
             
             document.getElementById('status').innerHTML = 
                 '⏳ Đang xử lý video Facebook...';
             document.getElementById('status').style.color = '#f59e0b';
+            document.getElementById('status').style.borderLeftColor = '#f59e0b';
             
             // Mock API call
             setTimeout(() => {
-                document.getElementById('status').innerHTML = 
-                    '✅ Video Facebook đã sẵn sàng! Nhấn OK để tải.';
-                document.getElementById('status').style.color = '#10b981';
+                addToHistory('facebook', url, quality, true);
                 
-                if (confirm('Video Facebook đã sẵn sàng!\n\nChất lượng: ' + quality + '\n\nTải về ngay?')) {
-                    alert('📥 Đang tải video... (Demo mode)');
+                document.getElementById('status').innerHTML = 
+                    `✅ Video Facebook đã sẵn sàng!<br>
+                     <small>Chất lượng: ${quality === 'best' ? 'Tốt nhất' : quality + 'p'} | Đã lưu vào lịch sử</small>`;
+                document.getElementById('status').style.color = '#10b981';
+                document.getElementById('status').style.borderLeftColor = '#10b981';
+                
+                if (confirm(`🎬 VIDEO FACEBOOK ĐÃ SẴN SÀNG!\n\nChất lượng: ${quality === 'best' ? 'Tốt nhất' : quality + 'p'}\n\nTải về ngay?`)) {
+                    showNotification('📥 Đang tải video... (Demo mode)');
                 }
-            }, 2000);
+            }, 1500);
         }
         
-        // Chức năng tải TikTok
         function downloadTikTok() {
-            const url = document.getElementById('ttUrl').value;
+            const url = document.getElementById('ttUrl').value.trim();
             const type = document.getElementById('ttType').value;
             
             if (!url) {
-                alert('Vui lòng nhập link video TikTok!');
+                showNotification('Vui lòng nhập link video TikTok!', 'error');
                 return;
             }
             
             if (!url.includes('tiktok.com')) {
-                alert('Link TikTok không hợp lệ!');
+                showNotification('Link TikTok không hợp lệ!', 'error');
                 return;
             }
             
             document.getElementById('status').innerHTML = 
                 '⏳ Đang xử lý video TikTok...';
             document.getElementById('status').style.color = '#f59e0b';
+            document.getElementById('status').style.borderLeftColor = '#f59e0b';
             
             // Mock API call
             setTimeout(() => {
-                document.getElementById('status').innerHTML = 
-                    '✅ Video TikTok đã sẵn sàng! ' + (type === 'audio' ? '(MP3 Audio)' : '(Video MP4)');
-                document.getElementById('status').style.color = '#10b981';
+                addToHistory('tiktok', url, type, true);
                 
-                if (confirm('Video TikTok đã sẵn sàng!\n\nLoại: ' + 
-                    (type === 'audio' ? 'Audio MP3' : 'Video MP4') + 
-                    '\n\nTải về ngay?')) {
-                    alert('📥 Đang tải ' + (type === 'audio' ? 'audio MP3' : 'video') + '... (Demo mode)');
+                const typeText = type === 'video' ? 'Video MP4' : 
+                               type === 'audio' ? 'Audio MP3' : 
+                               'Video + Audio';
+                
+                document.getElementById('status').innerHTML = 
+                    `✅ Video TikTok đã sẵn sàng!<br>
+                     <small>Loại: ${typeText} | Đã lưu vào lịch sử</small>`;
+                document.getElementById('status').style.color = '#10b981';
+                document.getElementById('status').style.borderLeftColor = '#10b981';
+                
+                if (confirm(`🎵 TIKTOK ĐÃ SẴN SÀNG!\n\nLoại file: ${typeText}\n\nTải về ngay?`)) {
+                    showNotification('📥 Đang tải ' + (type === 'audio' ? 'audio MP3' : 'video') + '... (Demo mode)');
                 }
-            }, 1500);
+            }, 1200);
         }
         
-        // Keyboard shortcut: Ctrl+Enter
+        // ===== NOTIFICATION SYSTEM =====
+        function showNotification(message, type = 'success') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: ${type === 'error' ? '#ef4444' : '#10b981'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 1001;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+                word-break: break-word;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // ===== KEYBOARD SHORTCUTS =====
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
                 const active = document.activeElement;
                 if (active.id === 'fbUrl') downloadFacebook();
                 if (active.id === 'ttUrl') downloadTikTok();
+            }
+            
+            // Escape to close history panel
+            if (e.key === 'Escape') {
+                document.getElementById('historyPanel').style.display = 'none';
             }
         });
     </script>
