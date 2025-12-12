@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công Cụ Của Tôi - Tải Video MXH Miễn Phí</title>
+    <title>Công Cụ Của Tôi - Tải Video Facebook & TikTok Miễn Phí</title>
+    <meta name="description" content="Công cụ tải video Facebook, TikTok miễn phí, không watermark, chất lượng cao. Hoạt động trên mọi thiết bị.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,477 +14,37 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
-        /* ===== CSS Variables ===== */
-        :root {
-            --primary: #000000;
-            --secondary: #3b82f6;
-            --accent: #8b5cf6;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            
-            --bg-dark: #0a0a0a;
-            --bg-card: rgba(30, 30, 30, 0.7);
-            --bg-glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --text-primary: #ffffff;
-            --text-secondary: #a0aec0;
-            
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 16px 48px rgba(59, 130, 246, 0.2);
-            --glass-blur: blur(12px);
-            
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* ===== Reset & Base ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(at 47% 33%, rgba(59, 130, 246, 0.1) 0, transparent 59%), 
-                radial-gradient(at 82% 65%, rgba(139, 92, 246, 0.1) 0, transparent 55%);
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* ===== Header ===== */
-        header {
-            padding: 2rem 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: var(--glass-blur);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .logo-icon {
-            font-size: 2.2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 8px 16px;
-            border-radius: 8px;
-        }
-        
-        .nav-link:hover {
-            color: var(--text-primary);
-            background: var(--bg-glass);
-        }
-        
-        .nav-link.active {
-            color: var(--secondary);
-            background: rgba(59, 130, 246, 0.1);
-        }
-        
-        /* ===== Hero Section ===== */
-        .hero {
-            padding: 6rem 0;
-            text-align: center;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff 30%, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-        
-        /* ===== Stats ===== */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-        
-        .stat-card {
-            background: var(--bg-glass);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* ===== Tools Section ===== */
-        .tools-section {
-            padding: 4rem 0;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .tool-card {
-            background: var(--bg-card);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--secondary);
-        }
-        
-        .tool-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .fb-icon { color: #1877F2; }
-        .tt-icon { color: #FF0050; }
-        
-        .tool-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .tool-desc {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .input-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .input-label {
-            display: block;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        input {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .btn {
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn-secondary {
-            background: var(--bg-glass);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--secondary);
-        }
-        
-        /* ===== Features ===== */
-        .features {
-            padding: 4rem 0;
-            background: rgba(0, 0, 0, 0.3);
-            margin-top: 4rem;
-            border-radius: 30px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-        }
-        
-        /* ===== Footer ===== */
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .copyright {
-            color: var(--text-secondary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-glass);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: var(--transition);
-        }
-        
-        .social-link:hover {
-            background: var(--secondary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* ===== Status Messages ===== */
-        .status-toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--bg-card);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            display: none;
-            align-items: center;
-            gap: 1rem;
-            max-width: 400px;
-            z-index: 1000;
-            animation: slideInRight 0.3s ease;
-        }
-        
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        /* ===== Responsive ===== */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
-            .tools-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .footer-content { flex-direction: column; text-align: center; }
-        }
-        
-        /* ===== Animations ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container nav-container">
-            <div class="logo">
+            <a href="/" class="logo">
                 <i class="fas fa-tools logo-icon"></i>
                 <span>Công Cụ Của Tôi</span>
-            </div>
+            </a>
+            
             <nav class="nav-links">
-                <a href="#" class="nav-link active"><i class="fas fa-home"></i> Trang Chủ</a>
-                <a href="#" class="nav-link"><i class="fab fa-facebook"></i> Facebook</a>
-                <a href="#" class="nav-link"><i class="fab fa-tiktok"></i> TikTok</a>
-                <a href="#" class="nav-link"><i class="fas fa-question-circle"></i> Hướng Dẫn</a>
+                <a href="#" class="nav-link active">
+                    <i class="fas fa-home"></i> Trang Chủ
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-question-circle"></i> Hướng Dẫn
+                </a>
+                <span class="nav-link" id="apiStatus">
+                    <i class="fas fa-circle-notch loading"></i> API
+                </span>
             </nav>
         </div>
     </header>
@@ -492,18 +53,21 @@
     <section class="hero">
         <div class="container">
             <h1 class="hero-title fade-in">
-                Tải Video Facebook & TikTok<br>
-                <span style="font-size: 2.5rem;">Miễn Phí & Không Watermark</span>
+                Tải Video Facebook & TikTok
+                <br>
+                <span style="font-size: 2.5rem; color: var(--secondary);">Miễn Phí & Không Watermark</span>
             </h1>
+            
             <p class="hero-subtitle fade-in">
                 Công cụ mạnh mẽ giúp bạn tải video chất lượng cao từ các nền tảng mạng xã hội.
+                <br>
                 Hoàn toàn miễn phí, không cần đăng ký, hoạt động 24/7.
             </p>
             
             <div class="stats fade-in">
                 <div class="stat-card">
                     <div class="stat-number">2+</div>
-                    <div>Công Cụ</div>
+                    <div>Công Cụ Chính</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">100%</div>
@@ -514,8 +78,10 @@
                     <div>Hoạt Động</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number"><i class="fas fa-bolt"></i></div>
-                    <div>Tốc Độ Cao</div>
+                    <div class="stat-number">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div>Mọi Thiết Bị</div>
                 </div>
             </div>
         </div>
@@ -527,14 +93,16 @@
             <h2 class="section-title fade-in">Công Cụ Chính</h2>
             
             <div class="tools-grid">
-                <!-- Facebook Tool Card -->
+                <!-- Facebook Tool -->
                 <div class="tool-card fade-in">
                     <div class="tool-icon fb-icon">
                         <i class="fab fa-facebook-square"></i>
                     </div>
+                    
                     <h3 class="tool-title">
-                        <i class="fab fa-facebook"></i> Facebook Downloader
+                        <i class="fab fa-facebook"></i> Công Cụ Facebook
                     </h3>
+                    
                     <p class="tool-desc">
                         Tải video Facebook chất lượng cao, không watermark. 
                         Hỗ trợ đa dạng chất lượng từ 360p đến Full HD 1080p.
@@ -545,27 +113,34 @@
                         <label class="input-label">
                             <i class="fas fa-link"></i> Dán link video Facebook
                         </label>
-                        <input type="text" id="fb-url" placeholder="https://www.facebook.com/watch/?v=...">
+                        <input 
+                            type="text" 
+                            id="fbUrl" 
+                            placeholder="https://www.facebook.com/watch/?v=..." 
+                            autocomplete="off"
+                            spellcheck="false">
                     </div>
                     
                     <div class="btn-group">
-                        <button class="btn btn-primary" onclick="processFacebook()">
+                        <button class="btn btn-primary btn-full" onclick="downloadFacebook()">
                             <i class="fas fa-download"></i> Tải Video Facebook
                         </button>
-                        <button class="btn btn-secondary" onclick="showFeature('save')">
+                        <button class="btn btn-secondary btn-full" onclick="showToast('Tính năng đang phát triển', 'Tính năng Lưu Bài Viết đang được phát triển', 'info')">
                             <i class="fas fa-save"></i> Lưu Bài Viết
                         </button>
                     </div>
                 </div>
 
-                <!-- TikTok Tool Card -->
+                <!-- TikTok Tool -->
                 <div class="tool-card fade-in" style="animation-delay: 0.2s;">
                     <div class="tool-icon tt-icon">
                         <i class="fab fa-tiktok"></i>
                     </div>
+                    
                     <h3 class="tool-title">
-                        <i class="fab fa-tiktok"></i> TikTok Downloader
+                        <i class="fab fa-tiktok"></i> Công Cụ TikTok
                     </h3>
+                    
                     <p class="tool-desc">
                         Tải video TikTok không watermark, chất lượng cao. 
                         Tách nhạc MP3 từ video, hỗ trợ tải nhanh không giới hạn.
@@ -576,14 +151,19 @@
                         <label class="input-label">
                             <i class="fas fa-link"></i> Dán link video TikTok
                         </label>
-                        <input type="text" id="tt-url" placeholder="https://www.tiktok.com/@username/video/...">
+                        <input 
+                            type="text" 
+                            id="ttUrl" 
+                            placeholder="https://www.tiktok.com/@username/video/..." 
+                            autocomplete="off"
+                            spellcheck="false">
                     </div>
                     
                     <div class="btn-group">
-                        <button class="btn btn-primary" onclick="processTikTok()">
+                        <button class="btn btn-primary btn-full" onclick="downloadTikTok()">
                             <i class="fas fa-download"></i> Tải Video TikTok
                         </button>
-                        <button class="btn btn-secondary" onclick="showFeature('audio')">
+                        <button class="btn btn-secondary btn-full" onclick="showToast('Tính năng đang phát triển', 'Tính năng Tách Nhạc đang được phát triển', 'info')">
                             <i class="fas fa-music"></i> Tách Nhạc MP3
                         </button>
                     </div>
@@ -596,6 +176,7 @@
     <section class="features">
         <div class="container">
             <h2 class="section-title fade-in">Tại Sao Chọn Chúng Tôi?</h2>
+            
             <div class="features-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
@@ -604,6 +185,7 @@
                     <h3>Tốc Độ Cao</h3>
                     <p>Tải video chỉ trong vài giây với tốc độ cực nhanh</p>
                 </div>
+                
                 <div class="feature-card fade-in" style="animation-delay: 0.1s;">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -611,6 +193,7 @@
                     <h3>An Toàn</h3>
                     <p>Không lưu trữ dữ liệu, bảo mật tuyệt đối</p>
                 </div>
+                
                 <div class="feature-card fade-in" style="animation-delay: 0.2s;">
                     <div class="feature-icon">
                         <i class="fas fa-infinity"></i>
@@ -618,6 +201,7 @@
                     <h3>Không Giới Hạn</h3>
                     <p>Tải không giới hạn số lượng video</p>
                 </div>
+                
                 <div class="feature-card fade-in" style="animation-delay: 0.3s;">
                     <div class="feature-icon">
                         <i class="fas fa-mobile-alt"></i>
@@ -636,15 +220,19 @@
                 <div class="copyright">
                     <h3><i class="fas fa-tools"></i> Công Cụ Của Tôi</h3>
                     <p>© 2024 - Dự án mã nguồn mở, phát triển vì cộng đồng</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                        Phiên bản 1.0.0 | Hosted on Vercel
+                    </p>
                 </div>
+                
                 <div class="social-links">
-                    <a href="https://github.com/ncd405" class="social-link" title="GitHub">
+                    <a href="https://github.com/ncd405/Cong-Cu-Cua-Toi" target="_blank" class="social-link" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="social-link" title="API Documentation">
+                    <a href="/api/health" target="_blank" class="social-link" title="API Status">
                         <i class="fas fa-code"></i>
                     </a>
-                    <a href="#" class="social-link" title="Hỗ Trợ">
+                    <a href="#" class="social-link" title="Hỗ Trợ" onclick="showToast('Hỗ trợ', 'Liên hệ qua GitHub Issues', 'info')">
                         <i class="fas fa-question-circle"></i>
                     </a>
                 </div>
@@ -652,160 +240,10 @@
         </div>
     </footer>
 
-    <!-- Status Toast -->
-    <div id="status-toast" class="status-toast">
-        <i class="fas fa-info-circle" id="toast-icon"></i>
-        <div>
-            <strong id="toast-title">Thông báo</strong>
-            <p id="toast-message">Tin nhắn trạng thái</p>
-        </div>
-        <button onclick="hideToast()" style="background:none;border:none;color:#a0aec0;cursor:pointer;">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
 
     <!-- JavaScript -->
-    <script>
-        // Toast notification system
-        function showToast(title, message, type = 'info') {
-            const toast = document.getElementById('status-toast');
-            const icon = document.getElementById('toast-icon');
-            const toastTitle = document.getElementById('toast-title');
-            const toastMessage = document.getElementById('toast-message');
-            
-            // Set icon based on type
-            const icons = {
-                success: 'fas fa-check-circle',
-                error: 'fas fa-times-circle',
-                warning: 'fas fa-exclamation-triangle',
-                info: 'fas fa-info-circle'
-            };
-            
-            icon.className = icons[type] || icons.info;
-            
-            // Set colors
-            const colors = {
-                success: '#10b981',
-                error: '#ef4444',
-                warning: '#f59e0b',
-                info: '#3b82f6'
-            };
-            
-            icon.style.color = colors[type] || colors.info;
-            
-            // Set content
-            toastTitle.textContent = title;
-            toastMessage.textContent = message;
-            
-            // Show toast
-            toast.style.display = 'flex';
-            
-            // Auto hide after 5 seconds
-            setTimeout(hideToast, 5000);
-        }
-        
-        function hideToast() {
-            document.getElementById('status-toast').style.display = 'none';
-        }
-        
-        // Facebook processing
-        function processFacebook() {
-            const url = document.getElementById('fb-url').value.trim();
-            
-            if (!url) {
-                showToast('Thiếu thông tin', 'Vui lòng nhập URL video Facebook', 'warning');
-                return;
-            }
-            
-            if (!url.includes('facebook.com') && !url.includes('fb.watch')) {
-                showToast('URL không hợp lệ', 'Vui lòng nhập URL Facebook chính xác', 'error');
-                return;
-            }
-            
-            showToast('Đang xử lý', 'Đang phân tích video Facebook...', 'info');
-            
-            // Simulate API call
-            setTimeout(() => {
-                showToast('Thành công', 'Đã sẵn sàng tải video Facebook!', 'success');
-                
-                // Show download options
-                setTimeout(() => {
-                    if (confirm('Video đã sẵn sàng tải về!\n\nChọn chất lượng:\n✓ HD (1080p) - 25MB\n✓ SD (720p) - 15MB\n✓ 360p - 8MB\n\n(Nhấn OK để tiếp tục)')) {
-                        showToast('Đang tải', 'Bắt đầu tải video Facebook...', 'info');
-                    }
-                }, 1000);
-            }, 1500);
-        }
-        
-        // TikTok processing
-        function processTikTok() {
-            const url = document.getElementById('tt-url').value.trim();
-            
-            if (!url) {
-                showToast('Thiếu thông tin', 'Vui lòng nhập URL video TikTok', 'warning');
-                return;
-            }
-            
-            if (!url.includes('tiktok.com')) {
-                showToast('URL không hợp lệ', 'Vui lòng nhập URL TikTok chính xác', 'error');
-                return;
-            }
-            
-            showToast('Đang xử lý', 'Đang phân tích video TikTok...', 'info');
-            
-            // Simulate API call
-            setTimeout(() => {
-                showToast('Thành công', 'Đã sẵn sàng tải video TikTok!', 'success');
-                
-                // Show download options
-                setTimeout(() => {
-                    if (confirm('Video TikTok đã sẵn sàng!\n\nTùy chọn:\n✓ Video không watermark\n✓ Chất lượng HD\n✓ Tách nhạc MP3\n\n(Nhấn OK để tiếp tục)')) {
-                        showToast('Đang tải', 'Bắt đầu tải video TikTok...', 'info');
-                    }
-                }, 1000);
-            }, 1500);
-        }
-        
-        // Show feature coming soon
-        function showFeature(feature) {
-            const messages = {
-                save: 'Tính năng Lưu Bài Viết đang được phát triển!',
-                audio: 'Tính năng Tách Nhạc MP3 đang được phát triển!'
-            };
-            
-            showToast('Sắp ra mắt', messages[feature] || 'Tính năng đang được phát triển', 'info');
-        }
-        
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add fade-in animation to elements
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.1}s`;
-            });
-            
-            // Check API status
-            checkApiStatus();
-        });
-        
-        // Check API status
-        async function checkApiStatus() {
-            try {
-                const response = await fetch('/api/health');
-                const data = await response.json();
-                console.log('API Status:', data);
-            } catch (error) {
-                console.log('API đang trong chế độ demo');
-            }
-        }
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'Enter') {
-                if (document.activeElement.id === 'fb-url') processFacebook();
-                if (document.activeElement.id === 'tt-url') processTikTok();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
